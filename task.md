@@ -1,0 +1,46 @@
+# Sentience Landing Page
+
+- [x] Project Setup <!-- id: 0 -->
+    - [x] Create directory structure (assets/fonts) <!-- id: 1 -->
+    - [x] Initialize `index.html`, `styles.css`, `script.js` <!-- id: 2 -->
+- [x] Implementation (Legacy) <!-- id: 3 -->
+    - [x] Implement Canvas Particle Background <!-- id: 4 -->
+    - [x] Implement Typography & Hero Section (Heading, Tagline) <!-- id: 5 -->
+    - [x] Implement Scroll Triggered Morphing Effect <!-- id: 6 -->
+    - [x] Implement CTA Button with animations <!-- id: 7 -->
+    - [x] Implement Floating Decorative Elements <!-- id: 8 -->
+    - [x] Ensure Mobile Responsiveness <!-- id: 9 -->
+- [x] Refactor to React & Shadcn <!-- id: 14 -->
+    - [x] Update package.json & Dependencies <!-- id: 15 -->
+    - [x] Create Config Files (TS, Vite, Tailwind) <!-- id: 16 -->
+    - [x] Create Project Structure (src, lib, components) <!-- id: 17 -->
+    - [x] Implement UI Components (Button, BackgroundPaths) <!-- id: 18 -->
+    - [x] Implement Main App & Entry Point <!-- id: 19 -->
+- [x] Customization <!-- id: 20 -->
+    - [x] Dark Mode & Black Background <!-- id: 21 -->
+    - [x] White/Silver Text Gradient <!-- id: 22 -->
+    - [x] Increase Font Size <!-- id: 23 -->
+    - [x] Fix Button Hover & Text <!-- id: 24 -->
+- [x] Discover Page (Landing -> Loading) <!-- id: 25 -->
+    - [x] Install Three.js & React Router <!-- id: 26 -->
+    - [x] Create RevealWaveImage Component <!-- id: 27 -->
+    - [x] Create LuminaInteractiveList Component <!-- id: 43 -->
+    - [x] Integrate Lumina into Discover Page <!-- id: 45 -->
+    - [x] Enable 7s Redirect <!-- id: 46 -->
+- [x] Environment Repair <!-- id: 31 -->
+    - [x] Kill Zombie Node Processes <!-- id: 32 -->
+    - [x] Fix package.json versions <!-- id: 33 -->
+    - [x] Clean Reinstall <!-- id: 34 -->
+    - [x] Restart Server <!-- id: 35 -->
+- [x] Full Screen Reveal Image <!-- id: 36 -->
+    - [x] Update RevealWaveImage for Object-Cover support <!-- id: 37 -->
+    - [x] Set up local image placeholder config <!-- id: 38 -->
+    - [x] Optimize Quality (DPR, PixelSize) <!-- id: 40 -->
+- [x] Refactor Flow <!-- id: 50 -->
+    - [x] Create Lumina Page (Destination) <!-- id: 51 -->
+    - [x] Revert Discover Page to RevealWaveImage (Loader) <!-- id: 52 -->
+    - [x] Update Routes (Landing -> Discover -> Lumina) <!-- id: 53 -->
+- [/] Refinement (Current) <!-- id: 54 -->
+    - [/] Fix Loading Screen Layout (Remove Flex) <!-- id: 55 -->
+    - [x] Add Cleanup to Lumina Component (Fix double-run) <!-- id: 56 -->
+    - [ ] Fix WebGL Context Lost Error <!-- id: 58 -->

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentience</title>
+</head>
+
+<body>
+    <div id="root"></div>
+    <div id="error-display"
+        style="color: red; padding: 20px; font-family: monospace; white-space: pre-wrap; position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none;">
+    </div>
+    <script>
+        window.onerror = function (msg, url, line, col, error) {
+            document.getElementById('error-display').innerText += `Error: ${msg}\nLine: ${line}:${col}\n${error?.stack || ''}\n`;
+        };
+        window.onunhandledrejection = function (event) {
+            document.getElementById('error-display').innerText += `Unhandled Rejection: ${event.reason}\n`;
+        };
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>
