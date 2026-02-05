@@ -8,7 +8,7 @@ export default function Discover() {
     useEffect(() => {
         // 7 Second Loading Screen -> Redirect to Lumina
         const timer = setTimeout(() => {
-            navigate('/lumina');
+            navigate('/sentience');
         }, 7000);
         return () => clearTimeout(timer);
     }, [navigate]);

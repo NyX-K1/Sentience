@@ -40,6 +40,40 @@
     - [x] Create Lumina Page (Destination) <!-- id: 51 -->
     - [x] Revert Discover Page to RevealWaveImage (Loader) <!-- id: 52 -->
     - [x] Update Routes (Landing -> Discover -> Lumina) <!-- id: 53 -->
+- [x] Smart Journal Page (Templates)
+    - [x] Create `JournalTemplatesHero` Component (Adapted ScrollMorphHero)
+    - [x] Create `SmartJournal` Page
+    - [x] Update Routes (/smart-journal)
+    - [x] Update Landing Page Navigation
+- [x] Cognitive Reframing Page
+    - [x] Create `LampContainer` Component (src/components/ui/lamp.tsx)
+    - [x] Create `CognitiveReframing` Page
+    - [x] Update Routes (/cognitive-reframing)
+    - [x] Update Landing Page Navigation
+- [x] Weekly Report Page
+    - [x] Create `FullScreenScrollFX` Component (Adapted)
+    - [x] Create `WeeklyReport` Page
+    - [x] Update Routes (/weekly-report)
+    - [x] Update Landing Page Navigation
+- [x] Emotional Unloading Page
+    - [x] Create `EmotionalHero` Component (Adapted from Modern Hero)
+    - [x] Create `EmotionalUnloading` Page Wrapper
+    - [x] Update Routes (Trigger Map -> Emotional Unloading)
+    - [x] Update Landing Page Navigation
+- [x] Scrollytelling Section
+    - [x] Install dependencies (lenis)
+    - [x] Create `HeroScrollVideo` Component
+    - [x] Integrate into `SentienceLanding`
+    - [x] Customize content for Sentience theme
+- [x] Mind Info Page
+    - [x] Create `MindInfo` Page Component
+    - [x] Create `SpatialProductShowcase` Component
+    - [x] Update Navigation (CBT Studio -> Mind Info)
+    - [x] Design Mind Info Page (Integrate Showcase)
+- [x] Glitch Text Hero Section
+    - [x] Create GlitchText Component
+    - [x] Integrate into SentienceLanding
+    - [x] Verify glitch effect and timing
 - [/] Refinement (Current) <!-- id: 54 -->
     - [/] Fix Loading Screen Layout (Remove Flex) <!-- id: 55 -->
     - [x] Add Cleanup to Lumina Component (Fix double-run) <!-- id: 56 -->
