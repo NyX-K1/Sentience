@@ -8,12 +8,14 @@ import EmotionalUnloading from './pages/EmotionalUnloading';
 import WeeklyReport from './pages/WeeklyReport';
 import SmartJournal from './pages/SmartJournal';
 import CognitiveReframing from './pages/CognitiveReframing';
+import BalancedThoughtPage from './pages/BalancedThoughtPage';
+import ScrollAnimationPage from './pages/ScrollAnimationPage';
 
 const App = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Discover />} />
+                <Route path="/" element={<ScrollAnimationPage />} />
                 <Route path="/discover" element={<Discover />} />
                 <Route path="/lumina" element={<LuminaPage />} />
                 <Route path="/sentience" element={<SentienceLanding />} />
@@ -22,6 +24,7 @@ const App = () => {
                 <Route path="/weekly-report" element={<WeeklyReport />} />
                 <Route path="/smart-journal" element={<SmartJournal />} />
                 <Route path="/cognitive-reframing" element={<CognitiveReframing />} />
+                <Route path="/balanced-thought" element={<BalancedThoughtPage />} />
             </Routes>
         </BrowserRouter>
     );

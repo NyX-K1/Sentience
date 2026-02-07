@@ -16,9 +16,9 @@ export default function SentienceLanding() {
             bgColor: "#2e1065", // Deep Violet
             textColor: "#e9d5ff",
             links: [
-                { label: "Interactive Sessions", ariaLabel: "Start CBT Session" },
-                { label: "Cognitive Reframing", ariaLabel: "Reframing Tools", href: "/cognitive-reframing" },
-                { label: "Mind Info", ariaLabel: "View Mind Info", href: "/mind-info" }
+                { label: "Guided Breakthroughs", ariaLabel: "Start Guided Breakthrough Session" },
+                { label: "Thoughts and Exercises", ariaLabel: "Cognitive Reframing Tools & Relaxation", href: "/cognitive-reframing" },
+                { label: "Neural Insights", ariaLabel: "View Neural Insights", href: "/mind-info" }
             ]
         },
         {

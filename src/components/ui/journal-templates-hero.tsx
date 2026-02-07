@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -10,8 +10,6 @@ import { ArrowLeft } from "lucide-react";
 export type AnimationPhase = "scatter" | "line" | "circle" | "bottom-strip";
 
 interface FlipCardProps {
-    src: string;
-    index: number;
     total: number;
     phase: AnimationPhase;
     target: { x: number; y: number; rotation: number; scale: number; opacity: number };
@@ -23,8 +21,6 @@ const IMG_WIDTH = 100;
 const IMG_HEIGHT = 140;
 
 function FlipCard({
-    src,
-    index,
     target,
     title,
 }: FlipCardProps) {
@@ -62,17 +58,14 @@ function FlipCard({
             >
                 {/* Front Face */}
                 <div
-                    className="absolute inset-0 h-full w-full overflow-hidden rounded-xl shadow-lg bg-zinc-800 border border-zinc-700"
+                    className="absolute inset-0 h-full w-full overflow-hidden rounded-xl shadow-lg bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 border border-cyan-500/30 backdrop-blur-sm"
                     style={{ backfaceVisibility: "hidden" }}
                 >
-                    <img
-                        src={src}
-                        alt={`template-${index}`}
-                        className="h-full w-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-                    />
-                    <div className="absolute inset-0 bg-black/40 transition-colors group-hover:bg-transparent" />
-                    <div className="absolute bottom-2 left-2 right-2 text-white text-[10px] font-bold uppercase tracking-wider truncate drop-shadow-md">
-                        {title}
+                    <div className="absolute inset-0 bg-black/60" />
+                    <div className="relative h-full w-full flex items-center justify-center p-3">
+                        <p className="text-white text-center font-semibold text-sm leading-relaxed tracking-wide group-hover:scale-105 transition-transform duration-300">
+                            {title}
+                        </p>
                     </div>
                 </div>
 
@@ -95,20 +88,20 @@ function FlipCard({
 const TOTAL_IMAGES = 12; // Reduced for cleaner circle
 const MAX_SCROLL = 3000; // Virtual scroll range
 
-// Unsplash Images & Titles
+// Positive Affirmations Templates
 const TEMPLATES = [
-    { src: "https://images.unsplash.com/photo-1544396821-4dd40b938ad3?w=300&q=80", title: "Daily Reflection" },
-    { src: "https://images.unsplash.com/photo-1506784983877-45594efa4cbe?w=300&q=80", title: "Gratitude Log" },
-    { src: "https://images.unsplash.com/photo-1499750310159-5b600aaf0327?w=300&q=80", title: "Anxiety Release" },
-    { src: "https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?w=300&q=80", title: "Creative Spark" },
-    { src: "https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?w=300&q=80", title: "Goal Setting" },
-    { src: "https://images.unsplash.com/photo-1516383748727-28dca537dd92?w=300&q=80", title: "Dream Journal" },
-    { src: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=300&q=80", title: "Manifestation" },
-    { src: "https://images.unsplash.com/photo-1542435503-956c469947f6?w=300&q=80", title: "Self-Care Plan" },
-    { src: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=300&q=80", title: "Work Retro" },
-    { src: "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=300&q=80", title: "Mindfulness" },
-    { src: "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=300&q=80", title: "Shadow Work" },
-    { src: "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=300&q=80", title: "Clarity Deep Dive" },
+    "I Am Enough",
+    "I Choose Joy Today",
+    "I Am Calm & Centered",
+    "I Create My Reality",
+    "I Achieve My Dreams",
+    "I Trust The Journey",
+    "I Attract Abundance",
+    "I Deserve Happiness",
+    "I Am Powerful",
+    "I Am Present & Grateful",
+    "I Embrace My Growth",
+    "I See Clearly Now",
 ];
 
 // Helper for linear interpolation
@@ -386,9 +379,7 @@ export default function JournalTemplatesHero() {
                         return (
                             <FlipCard
                                 key={i}
-                                src={item.src}
-                                title={item.title}
-                                index={i}
+                                title={item}
                                 total={TOTAL_IMAGES}
                                 phase={introPhase}
                                 target={target}
