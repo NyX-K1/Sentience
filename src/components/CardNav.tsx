@@ -2,6 +2,9 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ArrowRight, Menu, X } from 'lucide-react';
+import GuidedBreakthroughs from '@/components/ui/guided-breakthroughs';
+import ThoughtRewiring from '@/components/ui/thought-rewiring';
+import NeuralInsights from '@/components/ui/neural-insights';
 
 interface NavLink {
     label: string;
@@ -39,6 +42,9 @@ export default function CardNav({
     ease = "circ.out",
 }: CardNavProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const [showGuidedBreakthroughs, setShowGuidedBreakthroughs] = useState(false);
+    const [showThoughtRewiring, setShowThoughtRewiring] = useState(false);
+    const [showNeuralInsights, setShowNeuralInsights] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement>(null);
     const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -91,6 +97,21 @@ export default function CardNav({
         const card = itemsRef.current[index];
         if (card) {
             gsap.to(card, { scale: 1, duration: 0.3, ease: "power2.out" });
+        }
+    };
+
+    const handleLinkClick = (label: string, href?: string) => {
+        if (label === "Guided Breakthroughs") {
+            setShowGuidedBreakthroughs(true);
+            setIsOpen(false);
+        } else if (label === "Thoughts and Exercises") {
+            setShowThoughtRewiring(true);
+            setIsOpen(false);
+        } else if (label === "Neural Insights") {
+            setShowNeuralInsights(true);
+            setIsOpen(false);
+        } else if (href) {
+            window.location.href = href;
         }
     };
 
@@ -161,9 +182,13 @@ export default function CardNav({
                                     {item.links.map((link, i) => (
                                         <li key={i} className="flex items-center gap-2 opacity-70 hover:opacity-100 transition-opacity">
                                             <ArrowRight size={14} className="opacity-0 -translate-x-2 group-hover:translate-x-0 group-hover:opacity-100 transition-all" />
-                                            <a href={link.href || '#'} aria-label={link.ariaLabel} className="text-sm uppercase tracking-widest font-medium">
+                                            <button
+                                                onClick={() => handleLinkClick(link.label, link.href)}
+                                                aria-label={link.ariaLabel}
+                                                className="text-sm uppercase tracking-widest font-medium text-left"
+                                            >
                                                 {link.label}
-                                            </a>
+                                            </button>
                                         </li>
                                     ))}
                                 </ul>
@@ -180,6 +205,19 @@ export default function CardNav({
                     ))}
                 </div>
             </div>
+
+            {/* CBT Studio Feature Modals */}
+            {showGuidedBreakthroughs && (
+                <GuidedBreakthroughs onClose={() => setShowGuidedBreakthroughs(false)} />
+            )}
+
+            {showThoughtRewiring && (
+                <ThoughtRewiring onClose={() => setShowThoughtRewiring(false)} />
+            )}
+
+            {showNeuralInsights && (
+                <NeuralInsights onClose={() => setShowNeuralInsights(false)} />
+            )}
         </div>
     );
 }
