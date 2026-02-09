@@ -26,7 +26,7 @@ export default function SentienceLanding() {
             bgColor: "#1e1b4b", // Deep Indigo
             textColor: "#c7d2fe",
             links: [
-                { label: "Smart Journal", ariaLabel: "Open Smart Journal", href: "/smart-journal" },
+                { label: "Smart Journalling", ariaLabel: "Open Smart Journal", href: "/smart-journalling" },
                 { label: "Voice Notes", ariaLabel: "Record Voice Note" },
                 { label: "Templates", ariaLabel: "View Templates", href: "/smart-journal" }
             ]

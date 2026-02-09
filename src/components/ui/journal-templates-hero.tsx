@@ -5,6 +5,7 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useTransform, useSpring, useMotionValue } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { gsap } from "gsap";
 
 // --- Types ---
 export type AnimationPhase = "scatter" | "line" | "circle" | "bottom-strip";
@@ -14,6 +15,7 @@ interface FlipCardProps {
     phase: AnimationPhase;
     target: { x: number; y: number; rotation: number; scale: number; opacity: number };
     title: string;
+    bgImage: string;
 }
 
 // --- FlipCard Component ---
@@ -23,29 +25,32 @@ const IMG_HEIGHT = 140;
 function FlipCard({
     target,
     title,
+    bgImage,
 }: FlipCardProps) {
-    return (
-        <motion.div
-            // Smoothly animate to the coordinates defined by the parent
-            animate={{
-                x: target.x,
-                y: target.y,
-                rotate: target.rotation,
-                scale: target.scale,
-                opacity: target.opacity,
-            }}
-            transition={{
-                type: "spring",
-                stiffness: 40,
-                damping: 15,
-            }}
+    const cardRef = useRef<HTMLDivElement>(null);
 
-            // Initial style
+    useEffect(() => {
+        if (!cardRef.current) return;
+
+        gsap.to(cardRef.current, {
+            x: target.x,
+            y: target.y,
+            rotate: target.rotation,
+            scale: target.scale,
+            opacity: target.opacity,
+            duration: 0.6,
+            ease: "power2.out",
+        });
+    }, [target]);
+
+    return (
+        <div
+            ref={cardRef}
             style={{
                 position: "absolute",
                 width: IMG_WIDTH,
                 height: IMG_HEIGHT,
-                transformStyle: "preserve-3d", // Essential for the 3D hover effect
+                transformStyle: "preserve-3d",
                 perspective: "1000px",
             }}
             className="cursor-pointer group"
@@ -58,12 +63,19 @@ function FlipCard({
             >
                 {/* Front Face */}
                 <div
-                    className="absolute inset-0 h-full w-full overflow-hidden rounded-xl shadow-lg bg-gradient-to-br from-cyan-500/20 via-purple-500/20 to-pink-500/20 border border-cyan-500/30 backdrop-blur-sm"
+                    className="absolute inset-0 h-full w-full overflow-hidden rounded-xl shadow-lg border border-cyan-500/30"
                     style={{ backfaceVisibility: "hidden" }}
                 >
-                    <div className="absolute inset-0 bg-black/60" />
+                    {/* Background Image */}
+                    <img
+                        src={bgImage}
+                        alt=""
+                        className="absolute inset-0 w-full h-full object-cover brightness-110"
+                    />
+                    {/* Lighter gradient overlay for text visibility */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/25 to-transparent" />
                     <div className="relative h-full w-full flex items-center justify-center p-3">
-                        <p className="text-white text-center font-semibold text-sm leading-relaxed tracking-wide group-hover:scale-105 transition-transform duration-300">
+                        <p className="text-white text-center font-bold text-sm leading-relaxed tracking-wide group-hover:scale-105 transition-transform duration-300 [text-shadow:_0_2px_12px_rgb(0_0_0_/_90%)]">
                             {title}
                         </p>
                     </div>
@@ -80,28 +92,28 @@ function FlipCard({
                     </div>
                 </div>
             </motion.div>
-        </motion.div>
+        </div>
     );
 }
 
 // --- Main Hero Component ---
-const TOTAL_IMAGES = 12; // Reduced for cleaner circle
-const MAX_SCROLL = 3000; // Virtual scroll range
+const TOTAL_IMAGES = 12;
+const MAX_SCROLL = 3000;
 
-// Positive Affirmations Templates
+// Positive Affirmations Templates with background images
 const TEMPLATES = [
-    "I Am Enough",
-    "I Choose Joy Today",
-    "I Am Calm & Centered",
-    "I Create My Reality",
-    "I Achieve My Dreams",
-    "I Trust The Journey",
-    "I Attract Abundance",
-    "I Deserve Happiness",
-    "I Am Powerful",
-    "I Am Present & Grateful",
-    "I Embrace My Growth",
-    "I See Clearly Now",
+    { text: "I Am Enough", bg: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" },
+    { text: "I Choose Joy Today", bg: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=400&q=80" },
+    { text: "I Am Calm & Centered", bg: "https://images.unsplash.com/photo-1519681393784-d120267933ba?w=400&q=80" },
+    { text: "I Create My Reality", bg: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=400&q=80" },
+    { text: "I Achieve My Dreams", bg: "https://images.unsplash.com/photo-1495616811223-4d98c6e9c869?w=400&q=80" },
+    { text: "I Trust The Journey", bg: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80" },
+    { text: "I Attract Abundance", bg: "https://images.unsplash.com/photo-1518895949257-7621c3c786d7?w=400&q=80" },
+    { text: "I Deserve Happiness", bg: "https://images.unsplash.com/photo-1502139214982-d0ad755818d8?w=400&q=80" },
+    { text: "I Am Powerful", bg: "https://images.unsplash.com/photo-1527489377706-5bf97e608852?w=400&q=80" },
+    { text: "I Am Present & Grateful", bg: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=400&q=80" },
+    { text: "I Embrace My Growth", bg: "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=400&q=80" },
+    { text: "I See Clearly Now", bg: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&q=80" },
 ];
 
 // Helper for linear interpolation
@@ -111,6 +123,11 @@ export default function JournalTemplatesHero() {
     const [introPhase, setIntroPhase] = useState<AnimationPhase>("scatter");
     const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
     const containerRef = useRef<HTMLDivElement>(null);
+
+    // Virtual scroll with GSAP smoothing
+    const virtualScroll = useMotionValue(0);
+    const scrollRef = useRef(0);
+    const targetScrollRef = useRef(0);
 
     // --- Container Size ---
     useEffect(() => {
@@ -128,7 +145,6 @@ export default function JournalTemplatesHero() {
         const observer = new ResizeObserver(handleResize);
         observer.observe(containerRef.current);
 
-        // Initial set
         setContainerSize({
             width: containerRef.current.offsetWidth,
             height: containerRef.current.offsetHeight,
@@ -137,21 +153,14 @@ export default function JournalTemplatesHero() {
         return () => observer.disconnect();
     }, []);
 
-    // --- Virtual Scroll Logic ---
-    const virtualScroll = useMotionValue(0);
-    const scrollRef = useRef(0); // Keep track of scroll value without re-renders
-
+    // --- Smooth Virtual Scroll with GSAP ---
     useEffect(() => {
         const container = containerRef.current;
         if (!container) return;
 
         const handleWheel = (e: WheelEvent) => {
-            // Prevent default to stop browser overscroll/bounce
             e.preventDefault();
-
-            const newScroll = Math.min(Math.max(scrollRef.current + e.deltaY, 0), MAX_SCROLL);
-            scrollRef.current = newScroll;
-            virtualScroll.set(newScroll);
+            targetScrollRef.current = Math.min(Math.max(targetScrollRef.current + e.deltaY * 2, 0), MAX_SCROLL);
         };
 
         // Touch support
@@ -161,33 +170,34 @@ export default function JournalTemplatesHero() {
         };
         const handleTouchMove = (e: TouchEvent) => {
             const touchY = e.touches[0].clientY;
-            const deltaY = touchStartY - touchY;
+            const deltaY = (touchStartY - touchY) * 2;
             touchStartY = touchY;
-
-            const newScroll = Math.min(Math.max(scrollRef.current + deltaY, 0), MAX_SCROLL);
-            scrollRef.current = newScroll;
-            virtualScroll.set(newScroll);
+            targetScrollRef.current = Math.min(Math.max(targetScrollRef.current + deltaY, 0), MAX_SCROLL);
         };
 
-        // Attach listeners to container instead of window for portability
         container.addEventListener("wheel", handleWheel, { passive: false });
         container.addEventListener("touchstart", handleTouchStart, { passive: false });
         container.addEventListener("touchmove", handleTouchMove, { passive: false });
+
+        // GSAP smooth interpolation
+        const ticker = gsap.ticker.add(() => {
+            scrollRef.current = lerp(scrollRef.current, targetScrollRef.current, 0.1);
+            virtualScroll.set(scrollRef.current);
+        });
 
         return () => {
             container.removeEventListener("wheel", handleWheel);
             container.removeEventListener("touchstart", handleTouchStart);
             container.removeEventListener("touchmove", handleTouchMove);
+            gsap.ticker.remove(ticker);
         };
     }, [virtualScroll]);
 
     // 1. Morph Progress: 0 (Circle) -> 1 (Bottom Arc)
-    // Happens between scroll 0 and 600
     const morphProgress = useTransform(virtualScroll, [0, 600], [0, 1]);
     const smoothMorph = useSpring(morphProgress, { stiffness: 40, damping: 20 });
 
-    // 2. Scroll Rotation (Shuffling): Starts after morph (e.g., > 600)
-    // Rotates the bottom arc as user continues scrolling
+    // 2. Scroll Rotation (Shuffling)
     const scrollRotate = useTransform(virtualScroll, [600, 3000], [0, 360]);
     const smoothScrollRotate = useSpring(scrollRotate, { stiffness: 40, damping: 20 });
 
@@ -202,10 +212,7 @@ export default function JournalTemplatesHero() {
         const handleMouseMove = (e: MouseEvent) => {
             const rect = container.getBoundingClientRect();
             const relativeX = e.clientX - rect.left;
-
-            // Normalize -1 to 1
             const normalizedX = (relativeX / rect.width) * 2 - 1;
-            // Move +/- 100px
             mouseX.set(normalizedX * 100);
         };
         container.addEventListener("mousemove", handleMouseMove);
@@ -247,7 +254,6 @@ export default function JournalTemplatesHero() {
     }, [smoothMorph, smoothScrollRotate, smoothMouseX]);
 
     // --- Content Opacity ---
-    // Fade in content when arc is formed (morphValue > 0.8)
     const contentOpacity = useTransform(smoothMorph, [0.8, 1], [0, 1]);
     const contentY = useTransform(smoothMorph, [0.8, 1], [20, 0]);
 
@@ -348,10 +354,10 @@ export default function JournalTemplatesHero() {
                             const startAngle = -90 - (spreadAngle / 2);
                             const step = spreadAngle / (TOTAL_IMAGES - 1);
 
-                            const scrollProgress = Math.min(Math.max(rotateValue / 360, 0), 1);
+                            const scrollProgressVal = Math.min(Math.max(rotateValue / 360, 0), 1);
 
                             const maxRotation = spreadAngle * 0.8;
-                            const boundedRotation = -scrollProgress * maxRotation;
+                            const boundedRotation = -scrollProgressVal * maxRotation;
 
                             const currentArcAngle = startAngle + (i * step) + boundedRotation;
                             const arcRad = (currentArcAngle * Math.PI) / 180;
@@ -369,17 +375,17 @@ export default function JournalTemplatesHero() {
                                 y: lerp(circlePos.y, arcPos.y, morphValue),
                                 rotation: lerp(circlePos.rotation, arcPos.rotation, morphValue),
                                 scale: lerp(1, arcPos.scale, morphValue),
-                                opacity: 1 - Math.abs(currentArcAngle + 90) / 120, // Fade out edges
+                                opacity: 1 - Math.abs(currentArcAngle + 90) / 120,
                             };
                         }
 
-                        // Ensure fade out on edges logic applies or clamp opacity
                         if (target.opacity < 0) target.opacity = 0;
 
                         return (
                             <FlipCard
                                 key={i}
-                                title={item}
+                                title={item.text}
+                                bgImage={item.bg}
                                 total={TOTAL_IMAGES}
                                 phase={introPhase}
                                 target={target}

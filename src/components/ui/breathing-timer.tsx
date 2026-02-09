@@ -26,6 +26,7 @@ export const BreathingTimer: React.FC<BreathingTimerProps> = ({
     const [audioEnabled, setAudioEnabled] = useState(true);
     const timerRef = useRef<NodeJS.Timeout | null>(null);
     const phaseTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const audioEnabledRef = useRef(audioEnabled);
 
     const totalCycles = pattern === '2-4-6' ? Math.ceil(duration * 60 / 12) : Math.ceil(duration * 60 / 16);
 
@@ -52,8 +53,8 @@ export const BreathingTimer: React.FC<BreathingTimerProps> = ({
     const startNextPhase = (phase: string) => {
         setCurrentPhase(phase as any);
 
-        // Play audio cue
-        if (audioEnabled && phase !== 'idle') {
+        // Play audio cue - use ref to get current value
+        if (audioEnabledRef.current && phase !== 'idle') {
             const audioType = phase === 'hold1' || phase === 'hold2' ? 'hold' : phase;
             playBreathingTone(audioType as 'inhale' | 'hold' | 'exhale', 0.3);
             triggerHaptic(50);
@@ -115,6 +116,11 @@ export const BreathingTimer: React.FC<BreathingTimerProps> = ({
             if (timerRef.current) clearInterval(timerRef.current);
         };
     }, [isActive, onComplete]);
+
+    // Sync audioEnabled state with ref
+    useEffect(() => {
+        audioEnabledRef.current = audioEnabled;
+    }, [audioEnabled]);
 
     // Cleanup on unmount
     useEffect(() => {

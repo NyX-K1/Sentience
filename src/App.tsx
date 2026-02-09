@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import { BackgroundPaths } from "@/components/ui/background-paths"
 import Discover from "@/pages/Discover"
 import LuminaPage from "@/pages/LuminaPage"
 import SentienceLanding from "@/pages/SentienceLanding"
@@ -7,6 +6,7 @@ import MindInfo from "@/pages/MindInfo"
 import EmotionalUnloading from './pages/EmotionalUnloading';
 import WeeklyReport from './pages/WeeklyReport';
 import SmartJournal from './pages/SmartJournal';
+import SmartJournalling from './pages/SmartJournalling';
 import CognitiveReframing from './pages/CognitiveReframing';
 import BalancedThoughtPage from './pages/BalancedThoughtPage';
 import ScrollAnimationPage from './pages/ScrollAnimationPage';
@@ -23,6 +23,7 @@ const App = () => {
                 <Route path="/emotional-unloading" element={<EmotionalUnloading />} />
                 <Route path="/weekly-report" element={<WeeklyReport />} />
                 <Route path="/smart-journal" element={<SmartJournal />} />
+                <Route path="/smart-journalling" element={<SmartJournalling />} />
                 <Route path="/cognitive-reframing" element={<CognitiveReframing />} />
                 <Route path="/balanced-thought" element={<BalancedThoughtPage />} />
             </Routes>
