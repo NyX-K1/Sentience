@@ -188,17 +188,85 @@ VITE_GROQ_API_KEY=your_groq_api_key_here
 
 ## 💡 Usage
 
-* 1. Onboarding
+### 1. Onboarding
 Navigate to the root URL to experience the immersive scroll-driven onboarding with 3D celestial visuals.
 
-* 2. Journaling
-Head to Smart Journaling — write your thoughts and watch as AI analyzes your entry in real-time, surfacing mood scores, sentiment, and emotional tags.
+### 2. Journaling
+Head to **Smart Journaling** — write your thoughts and watch as AI analyzes your entry in real-time, surfacing mood scores, sentiment, and emotional tags.
 
-* 3. Weekly Reports
-Check the Weekly Report page to visualize your mood trends over time with interactive charts.
+### 3. Weekly Reports
+Check the **Weekly Report** page to visualize your mood trends over time with interactive charts.
 
-* 4. CBT Tools
-Use Cognitive Reframing and Balanced Thought pages to challenge unhelpful thinking patterns with structured, evidence-based exercises.
+### 4. CBT Tools
+Use **Cognitive Reframing** and **Balanced Thought** pages to challenge unhelpful thinking patterns with structured, evidence-based exercises.
 
-* 5. Voice Notes
-Record audio notes when you'd prefer speaking over typing.
+### 5. Voice Notes
+Record audio notes when you prefer speaking over typing.
+
+---
+## 🗺️ Roadmap
+
+- [x] Immersive 3D onboarding experience
+- [x] AI-powered journal sentiment analysis (Groq + Llama)
+- [x] Mood tracking with data visualization
+- [x] CBT-based cognitive reframing tools
+- [x] Voice notes capture
+- [x] Breathing timer
+- [ ] **Global State Management** — Migrate to Zustand or Context API for scalable state sharing
+- [ ] **User Authentication** — Secure accounts with persistent cloud storage
+- [ ] **Backend & Database** — Persist journal entries, mood data, and user preferences
+- [ ] **PWA Support** — Offline access and installable app experience
+- [ ] **Performance Optimization** — Lazy loading for 3D components, resource disposal on unmount
+- [ ] **Accessibility (a11y)** — Full keyboard navigation, screen reader support, reduced motion preferences
+- [ ] **Dark / Light Theme Toggle**
+- [ ] **Export Data** — Download journal entries and reports as PDF
+- [ ] **Multi-language Support (i18n)**
+
+
+---
+
+## 🤝 Contributing
+
+Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. **Fork** the project
+2. **Create** your feature branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'feat: add amazing feature'`)
+4. **Push** to the branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+### Development Guidelines
+
+- Follow existing code style and component patterns
+- Use TypeScript — avoid `any` types
+- Test 3D/animation changes on lower-end devices
+- Keep bundle size in mind — lazy load heavy components
+- Write meaningful commit messages ([Conventional Commits](https://www.conventionalcommits.org/))
+
+---
+
+## 📄 License
+
+Distributed under the **MIT License**. See [`LICENSE`](LICENSE) for more information.
+
+---
+
+## 🙏 Acknowledgments
+
+- [React Three Fiber](https://docs.pmnd.rs/react-three-fiber) — Declarative 3D for React
+- [GSAP](https://gsap.com/) — Professional-grade animations
+- [Framer Motion](https://www.framer.com/motion/) — Production-ready motion library
+- [Groq](https://groq.com/) — Ultra-fast LLM inference
+- [Lenis](https://lenis.darkroom.engineering/) — Smooth scroll library
+- [Recharts](https://recharts.org/) — Composable charting library
+- [Tailwind CSS](https://tailwindcss.com/) — Utility-first CSS framework
+
+---
+
+<div align="center">
+
+**Built with 💜 for the mind**
+
+⭐ Star this repo if Sentience resonates with you ⭐
+
+</div>
