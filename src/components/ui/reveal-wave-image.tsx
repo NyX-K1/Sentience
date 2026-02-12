@@ -237,7 +237,6 @@ interface RevealWaveImageProps {
     waveFrequency?: number;
     waveAmplitude?: number;
     mouseRadius?: number;
-    className?: string;
 }
 
 export const RevealWaveImage = ({
@@ -249,7 +248,6 @@ export const RevealWaveImage = ({
     waveFrequency = 3.0,
     waveAmplitude = 0.2,
     mouseRadius = 0.2,
-    className = "h-full w-full",
 }: RevealWaveImageProps) => {
     const [isMouseInCanvas, setIsMouseInCanvas] = useState(false);
     const [aspectRatio, setAspectRatio] = useState<number | null>(null);

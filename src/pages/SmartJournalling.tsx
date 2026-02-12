@@ -120,7 +120,7 @@ export default function SmartJournalling() {
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [analysis, setAnalysis] = useState<AIAnalysis | null>(null);
     const [showSidebar, setShowSidebar] = useState(false);
-    const [isSimulationMode, setIsSimulationMode] = useState(false);
+    const [isSimulationMode] = useState(false);
 
     // Auto-fill Date/Time
     const now = new Date();

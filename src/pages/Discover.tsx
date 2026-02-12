@@ -53,7 +53,6 @@ export default function Discover() {
                 revealSoftness={0.5}
                 pixelSize={1}
                 mouseRadius={0.4}
-                className="z-10"
             />
 
             {/* Left Columns */}

@@ -24,8 +24,8 @@ export const BreathingTimer: React.FC<BreathingTimerProps> = ({
     const [cycleCount, setcycleCount] = useState(0);
     const [timeRemaining, setTimeRemaining] = useState(duration * 60);
     const [audioEnabled, setAudioEnabled] = useState(true);
-    const timerRef = useRef<NodeJS.Timeout | null>(null);
-    const phaseTimerRef = useRef<NodeJS.Timeout | null>(null);
+    const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+    const phaseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     const audioEnabledRef = useRef(audioEnabled);
 
     const totalCycles = pattern === '2-4-6' ? Math.ceil(duration * 60 / 12) : Math.ceil(duration * 60 / 16);

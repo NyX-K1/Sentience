@@ -28,7 +28,7 @@ export const CelestialSphere: React.FC<CelestialSphereProps> = ({
     if (!mountRef.current) return;
 
     const currentMount = mountRef.current;
-    
+
     // Scene setup
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -38,8 +38,6 @@ export const CelestialSphere: React.FC<CelestialSphereProps> = ({
     renderer.setSize(currentMount.clientWidth, currentMount.clientHeight);
     currentMount.appendChild(renderer.domElement);
 
-    const mouse = new THREE.Vector2(0.5, 0.5);
-    
     // --- Shaders ---
     const vertexShader = `
       varying vec2 vUv;
@@ -123,17 +121,17 @@ export const CelestialSphere: React.FC<CelestialSphereProps> = ({
     `;
 
     const material = new THREE.ShaderMaterial({
-        vertexShader,
-        fragmentShader,
-        uniforms: {
-          u_time: { value: 0.0 },
-          u_resolution: { value: new THREE.Vector2(currentMount.clientWidth, currentMount.clientHeight) },
-          u_mouse: { value: new THREE.Vector2() },
-          u_hue: { value: hue },
-          u_zoom: { value: zoom },
-          u_particle_size: { value: particleSize },
-        },
-      });
+      vertexShader,
+      fragmentShader,
+      uniforms: {
+        u_time: { value: 0.0 },
+        u_resolution: { value: new THREE.Vector2(currentMount.clientWidth, currentMount.clientHeight) },
+        u_mouse: { value: new THREE.Vector2() },
+        u_hue: { value: hue },
+        u_zoom: { value: zoom },
+        u_particle_size: { value: particleSize },
+      },
+    });
 
     const geometry = new THREE.PlaneGeometry(2, 2);
     const mesh = new THREE.Mesh(geometry, material);
@@ -141,7 +139,7 @@ export const CelestialSphere: React.FC<CelestialSphereProps> = ({
 
     let animationFrameId: number;
     let time = 0;
-    
+
     // --- Animation Loop ---
     const animate = () => {
       time += 0.005 * speed;
@@ -161,7 +159,7 @@ export const CelestialSphere: React.FC<CelestialSphereProps> = ({
     };
 
     const onMouseMove = (event: MouseEvent) => {
-       if (!currentMount) return;
+      if (!currentMount) return;
       const rect = currentMount.getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;

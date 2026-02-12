@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Brain, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowLeft, Sparkles, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 import { CelestialSphere } from "@/components/ui/celestial-sphere";
 import { useMoodData } from "@/hooks/useMoodData";
@@ -221,7 +221,7 @@ export default function WeeklyReport() {
                                         contentStyle={{ backgroundColor: '#1a1a1a', border: 'none', borderRadius: '8px' }}
                                     />
                                     <Bar dataKey="count" radius={[0, 10, 10, 0]}>
-                                        {topEmotions.map((entry, index) => (
+                                        {topEmotions.map((_, index) => (
                                             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                                         ))}
                                     </Bar>

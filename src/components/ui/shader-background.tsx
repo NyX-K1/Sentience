@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 
 const ShaderBackground = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -111,7 +111,7 @@ const ShaderBackground = () => {
   const loadShader = (gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null => {
     const shader = gl.createShader(type);
     if (!shader) return null;
-    
+
     gl.shaderSource(shader, source);
     gl.compileShader(shader);
 
@@ -163,9 +163,9 @@ const ShaderBackground = () => {
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
     const positions = [
       -1.0, -1.0,
-       1.0, -1.0,
-      -1.0,  1.0,
-       1.0,  1.0,
+      1.0, -1.0,
+      -1.0, 1.0,
+      1.0, 1.0,
     ];
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
 

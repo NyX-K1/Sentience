@@ -54,7 +54,6 @@ export default function SentienceLanding() {
             {/* New Card Navigation */}
             <CardNav
                 items={navItems}
-                baseColor="transparent"
                 menuColor="#050505"
                 buttonBgColor="#ffffff"
                 buttonTextColor="#000000"

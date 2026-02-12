@@ -23,7 +23,6 @@ interface CardNavProps {
     logo?: string;
     logoAlt?: string;
     items: NavItem[];
-    baseColor: string;
     menuColor: string;
     buttonBgColor: string;
     buttonTextColor: string;
@@ -35,7 +34,6 @@ export default function CardNav({
     logo,
     logoAlt,
     items,
-    baseColor,
     menuColor,
     buttonBgColor,
     buttonTextColor,
