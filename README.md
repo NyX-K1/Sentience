@@ -43,7 +43,7 @@ An AI-powered journaling experience with real-time analysis:
 - **Conversations** — Engage in a multi-turn therapeutic conversation with the AI after writing.
 - **Diary** — A chronological archive of all past journal entries, conversation history, and insights.
 
-### 3. 🧩 Thought Reframer (CBT)
+### 3. 🧩 Thought Reframer (CBT-cognitive behavioral therapy)
 A comprehensive Cognitive Behavioral Therapy tool:
 - **8-Step Protocol** — Walk through triggering situations, identify negative thoughts, and reframe them.
 - **Distortion Detective** — Identify cognitive distortions from a visual grid of 16 distortion types.
