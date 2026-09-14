@@ -3,6 +3,28 @@
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+-- Drop existing tables to ensure a clean schema if re-run
+DROP TABLE IF EXISTS trs_coping_strategies CASCADE;
+DROP TABLE IF EXISTS trs_brainstormed_alternatives CASCADE;
+DROP TABLE IF EXISTS trs_evidence CASCADE;
+DROP TABLE IF EXISTS trs_distortions CASCADE;
+DROP TABLE IF EXISTS trs_physical_sensations CASCADE;
+DROP TABLE IF EXISTS trs_emotions CASCADE;
+DROP TABLE IF EXISTS trs_context_tags CASCADE;
+DROP TABLE IF EXISTS thought_reframing_sessions CASCADE;
+
+DROP TABLE IF EXISTS mood_triggers CASCADE;
+DROP TABLE IF EXISTS mood_emotions CASCADE;
+DROP TABLE IF EXISTS mood_logs CASCADE;
+
+DROP TABLE IF EXISTS journal_conversations CASCADE;
+DROP TABLE IF EXISTS journal_coping_strategies CASCADE;
+DROP TABLE IF EXISTS journal_distortions CASCADE;
+DROP TABLE IF EXISTS journal_emotions CASCADE;
+DROP TABLE IF EXISTS journal_entries CASCADE;
+
+DROP TABLE IF EXISTS profiles CASCADE;
+
 -- Core Profiles Table (Used for Sentience Custom Auth)
 CREATE TABLE profiles (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
