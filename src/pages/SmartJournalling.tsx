@@ -216,7 +216,7 @@ export default function SmartJournalling() {
             const content = completion.choices[0]?.message?.content || "";
             console.log("Raw AI Response:", content);
 
-            const data: AIAnalysis = JSON.parse(content);
+            const data: AIAnalysis =JSON.parse(content);
 
             // SAVE TO LOCAL STORAGE via Hook
             addLog({
