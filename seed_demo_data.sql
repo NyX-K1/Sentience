@@ -16,7 +16,7 @@ BEGIN
      -- Auto-create the user if they don't exist
      -- The password hash is for 'password' (bcrypt 10 rounds)
      INSERT INTO profiles (email, password_hash, full_name, username, timezone) 
-     VALUES ('pe@2', '$2a$10$tZk52h8mXh.8V0P.r.xS.u.eP3/vXqY3K.M/mO6qS/s1z/wK7J2Gq', 'Project Exhibition', 'pe_user', 'Asia/Kolkata')
+     VALUES ('pe@2', '$2b$10$Lh.gJct8XBvakFNaXyd1Me8I4OxnttnwoHeOfPrXfR83ZAiD4MABK', 'Project Exhibition', 'pe_user', 'Asia/Kolkata')
      RETURNING id INTO demo_user_id;
   END IF;
 
