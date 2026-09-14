@@ -3,11 +3,17 @@
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
--- Core Users Table (Assuming Supabase Auth handles the primary users table, this is just for reference or a public profile table if needed)
--- CREATE TABLE users (
---   id UUID REFERENCES auth.users PRIMARY KEY,
---   email TEXT
--- );
+-- Core Profiles Table (Used for Sentience Custom Auth)
+CREATE TABLE profiles (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  email TEXT UNIQUE NOT NULL,
+  password_hash TEXT NOT NULL,
+  full_name TEXT,
+  username TEXT UNIQUE,
+  timezone TEXT,
+  avatar_url TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);
 
 -- ==========================================
 -- 1. JOURNAL ENTRIES
