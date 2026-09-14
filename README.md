@@ -79,8 +79,8 @@ A comprehensive analytics dashboard and export system:
 
 ### Installation
 ```bash
-git clone https://github.com/NyX-K1/Sentience_v2.git
-cd Sentience_v2
+git clone https://github.com/NyX-K1/Sentience.git
+cd Sentience
 npm install
 ```
 
