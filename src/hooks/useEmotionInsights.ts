@@ -63,7 +63,7 @@ Only return the JSON object, NO markdown formatting, NO extra text.`;
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        model: "llama-3.1-8b-instant",
+                        model: "openai/gpt-oss-120b",
                         messages: [{ role: "user", content: prompt }],
                         response_format: { type: "json_object" },
                         temperature: 0.3

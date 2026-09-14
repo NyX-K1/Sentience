@@ -201,7 +201,7 @@ export default function SmartJournalling() {
                 Entry: "${entry}"
             `;
 
-            console.log("Analyzing with Groq (llama-3.3-70b-versatile)...");
+            console.log("Analyzing with Groq (openai/gpt-oss-120b)...");
             const completion = await groq.chat.completions.create({
                 messages: [
                     {
@@ -209,7 +209,7 @@ export default function SmartJournalling() {
                         content: prompt,
                     },
                 ],
-                model: "llama-3.3-70b-versatile",
+                model: "openai/gpt-oss-120b",
                 response_format: { type: "json_object" },
             });
 

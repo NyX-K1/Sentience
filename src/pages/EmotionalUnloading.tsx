@@ -112,7 +112,7 @@ const VentingTools = () => {
                     role: "user",
                     content: `You are a CBT therapist. Rewrite this negative thought into a constructive, balanced perspective. Validate the feeling, then pivot to a growth mindset. Keep it brief (2-3 sentences). Thought: "${thought}"`
                 }],
-                model: "llama-3.3-70b-versatile",
+                model: "openai/gpt-oss-120b",
             });
             const result = completion.choices[0]?.message?.content;
             if (result) {

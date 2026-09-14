@@ -161,7 +161,7 @@ export default function VoiceNotes() {
                     },
                     { role: "user", content: `I feel ${mood.label.toLowerCase()}.` }
                 ],
-                model: "llama-3.3-70b-versatile",
+                model: "openai/gpt-oss-120b",
             });
 
             const text = completion.choices[0]?.message?.content || "Stay strong. This too shall pass.";
