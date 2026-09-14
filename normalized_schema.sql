@@ -171,10 +171,26 @@ CREATE TABLE trs_coping_strategies (
   strategy_text TEXT
 );
 
--- Set up Row Level Security (RLS) for all tables
--- This ensures users can only access their own data.
--- (Example policy for journal_entries)
--- ALTER TABLE journal_entries ENABLE ROW LEVEL SECURITY;
--- CREATE POLICY "Users can insert their own journal entries" ON journal_entries FOR INSERT WITH CHECK (auth.uid() = user_id);
--- CREATE POLICY "Users can view their own journal entries" ON journal_entries FOR SELECT USING (auth.uid() = user_id);
--- (You should apply similar RLS policies to all tables in production)
+-- ==========================================
+-- DISABLE ROW LEVEL SECURITY (RLS)
+-- ==========================================
+-- Since this application uses a custom authentication system (bypassing Supabase Auth) 
+-- and connects via the anon key, we must disable RLS on all tables to allow access.
+
+ALTER TABLE profiles DISABLE ROW LEVEL SECURITY;
+ALTER TABLE journal_entries DISABLE ROW LEVEL SECURITY;
+ALTER TABLE journal_emotions DISABLE ROW LEVEL SECURITY;
+ALTER TABLE journal_distortions DISABLE ROW LEVEL SECURITY;
+ALTER TABLE journal_coping_strategies DISABLE ROW LEVEL SECURITY;
+ALTER TABLE journal_conversations DISABLE ROW LEVEL SECURITY;
+ALTER TABLE mood_logs DISABLE ROW LEVEL SECURITY;
+ALTER TABLE mood_emotions DISABLE ROW LEVEL SECURITY;
+ALTER TABLE mood_triggers DISABLE ROW LEVEL SECURITY;
+ALTER TABLE thought_reframing_sessions DISABLE ROW LEVEL SECURITY;
+ALTER TABLE trs_context_tags DISABLE ROW LEVEL SECURITY;
+ALTER TABLE trs_emotions DISABLE ROW LEVEL SECURITY;
+ALTER TABLE trs_physical_sensations DISABLE ROW LEVEL SECURITY;
+ALTER TABLE trs_distortions DISABLE ROW LEVEL SECURITY;
+ALTER TABLE trs_evidence DISABLE ROW LEVEL SECURITY;
+ALTER TABLE trs_brainstormed_alternatives DISABLE ROW LEVEL SECURITY;
+ALTER TABLE trs_coping_strategies DISABLE ROW LEVEL SECURITY;
