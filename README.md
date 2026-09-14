@@ -32,10 +32,10 @@ A cinematic, AI-powered emotional intelligence platform — combining immersive 
 
 ### 1. 📊 Mood Tracker
 A visually rich, multi-step mood logging system:
-- **Emotion Wheel** — A granular emotion picker powered by a 951-emotion dataset.
-- **Valence/Arousal Mapping** — Captures emotional valence and arousal.
-- **Trigger Tagging** — Users tag triggers associated with their mood.
-- **Mood Timeline** — Historical view of past mood logs with trend visualization.
+- **Emotion Wheel** — A precise emotion selector powered by a comprehensive 951-word vocabulary.
+- **Valence/Arousal Mapping** — Captures the core intensity and positivity of your emotional state.
+- **Trigger Tagging** — Connects specific environmental factors and events directly to your mood logs.
+- **Mood Timeline** — A rich, historical dashboard offering visual analytics and long-term trend tracking.
 
 ### 2. 📝 Smart Journaling & Diary
 An AI-powered journaling experience with real-time analysis:
