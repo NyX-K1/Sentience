@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🧠 Sentience
+# 🧠 Sentience : Mental Wellbeing and Literacy
 
 ### *Where Introspection Meets Intelligence*
 
